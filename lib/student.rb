@@ -94,8 +94,8 @@ class Student
     SQL
 
     binding.pry
-    row = DB[:conn].execute(sql)
-    student = Student.new_from_db(row)
+    row = DB[:conn].execute(sql).flatten
+    student = Student.new_from_db(row[0])
     student
   end
 end
