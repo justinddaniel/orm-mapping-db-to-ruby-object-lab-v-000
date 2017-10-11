@@ -93,6 +93,7 @@ class Student
     LIMIT 1
     SQL
 
+    binding.pry
     row = DB[:conn].execute(sql).flatten
     student = Student.new_from_db(row[0])
     student
