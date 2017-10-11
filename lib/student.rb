@@ -93,9 +93,18 @@ class Student
     LIMIT 1
     SQL
 
-    binding.pry
     row = DB[:conn].execute(sql)[0]
     student = Student.new_from_db(row)
     student
   end
+
+  def self.all_students_in_grade_X(x)
+    sql = <<-SQL
+    SELECT * FROM students
+    WHERE grade = ?
+    SQL
+
+    DB[:conn].execute(sql, x)
+  end
+  
 end
